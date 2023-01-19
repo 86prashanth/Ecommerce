@@ -1,0 +1,38 @@
+{% extends "layout/main.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>collections</h1>
+                <hr>
+                <div class="row">
+                    {% for item in category %}
+                      <div class="col-md-3">
+                        <div class="card">
+                        <a href="{% url 'collectionsview' item.slug%}">
+                            <div class="card-body">
+                                <div class="category-image">
+                                    <img src="{{ item.image.url}}" alt="category image" height="200px" width="200px"/>
+                                </div>
+                                <h4 class="text-center">{{item.name}}</h4>
+                            </div>
+                        </a>
+                        </div><br>
+                      </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>  
+    {% endblock content %}
+</body>
+</html>
